@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Shop;
+use App\Orders;
+use App\OrderedProducts;
 use Session;
 Session_start();
 use Illuminate\Support\Facades\Redirect;
@@ -87,5 +89,15 @@ class Keepercontroller extends Controller
     {
         Session::flush();
         return Redirect::to('shoper');
+    }
+    public function orders(){
+        $orders=Orders::join('ordered_products','orders.id','=','ordered_products.order_id')
+        // ->join('products','ordered_products.product_id','=','products.product_id')
+        // ->select('products.*ordered_products','products.product_image')
+        ->get();
+        // dd($orders);
+        return view('admin/shop/show-orders',compact('orders'));
+        // ->join('tabs','products.tab_id','=','tabs.tab_id')->join('shops','products.shop_id','=','shops.id')->where('shop_id',Session::get('id'))->get();
+
     }
 }

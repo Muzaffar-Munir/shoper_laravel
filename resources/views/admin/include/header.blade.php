@@ -104,6 +104,12 @@
               </ul>
             </li>
             @endif
+            <li class="mt">
+              <a  href="{{url('orders')}}">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Orders</span>
+              </a>
+            </li>
             <li>
               <a href="google_maps.html">
                 <i class="fa fa-map-marker"></i>

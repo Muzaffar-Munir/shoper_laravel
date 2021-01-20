@@ -39,7 +39,10 @@
                                 <ins>{{$showp->product_price}}</ins> <del>$999.00</del>
                             </div>
                             <div class="product-option-shop">
-                                <a class="add_to_cart_button" href="{{url('single-shop/'.$showp->product_id)}}">Add to cart</a>
+                             <form action="{{url('add-cart',$showp->product_id)}}" method="post" class="cart">
+                                        {{csrf_field()}}
+                                <button class="add_to_cart_button" type="submit">Add to cart</button>
+                                </form>
                             </div>
                         </div>
                     </div>

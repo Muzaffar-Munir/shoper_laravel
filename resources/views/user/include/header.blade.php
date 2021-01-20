@@ -96,12 +96,12 @@ URL: https://www.freshdesignweb.com/ustora/
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="logo">
-                                <h1><a href="./"><img src="{{asset('user/img/logo.png')}}"></a></h1>
+                                <h1><a href="{{asset('/')}}"><img src="{{asset('user/img/logo.png')}}"></a></h1>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="shopping-item">
-                                <a href="{{url('show-cart/')}}">Cart - <span class="cart-amunt">amout</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                                <a href="{{url('show-cart/')}}">Cart - <span class="cart-amunt">RS. {{Cart::total()}}</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">{{Cart::count()}}</span></a>
                             </div>
                         </div>
                     </div>

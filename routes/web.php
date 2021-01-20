@@ -21,12 +21,15 @@ Route::get('single-shop/{product_id}','ShopController@single_shop');
 Route::post('add-cart/{product_id}','CartController@add_cart');
 
 Route::GET('show-cart/','CartController@show_cart');
+Route::GET('checkout/','CartController@checkout');
+Route::post('place-order/','CartController@placeOrder');
 
 Route::get('remove-cart/{id}','CartController@remove_cart');
 Route::get('update-cart/','CartController@update_cart');
 
 /*customer route*/
 Route::get('login','CustomerController@login');
+Route::post('login','CustomerController@login');
 Route::post('signup','CustomerController@store');
 Route::get('logout','CustomerController@logout');
 Route::get('account','CustomerController@account');
@@ -97,7 +100,10 @@ Route::get('edit_customer/{customer_id}','CustomerController@edit_customer');
 Route::post('update_customer/{customer_id}','CustomerController@update_customer');
 Route::delete('/customer/{customer_id}','CustomerController@customer_destroy');
 /*Admin Add Shop*/
+
+
 Route::get('add-shop','Keepercontroller@add_shop');
+Route::get('orders','Keepercontroller@orders');
 Route::post('admin-shop','Keepercontroller@admin_shop');
 Route::get('show-shop','Keepercontroller@show_shop');
 Route::get('edit_shop/{id}','Keepercontroller@edit_shops');

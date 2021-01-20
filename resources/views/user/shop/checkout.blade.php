@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="product-bit-title text-center">
-					<h2>Shopping Cart</h2>
+					<h2>Checkout</h2>
 				</div>
 			</div>
 		</div>
@@ -72,7 +72,7 @@
 				<div class="col-md-8">
 					<div class="product-content-right">
 						<div class="woocommerce">
-							<form method="post" action="#">
+							{{-- <form method="post" action="#">
 								<table cellspacing="0" class="shop_table cart">
 									<thead>
 										<tr>
@@ -115,23 +115,65 @@
 										@endforeach
 										<tr>
 											<td class="actions" colspan="6">
-												{{-- <div class="coupon">
-													<label for="coupon_code">Coupon:</label>
-													<input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code">
-													<input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
-												</div> --}}
 												<a href="{{url('shop')}}" type="button" class="button update_cart">Update Cart</a>
-												<a href="{{url('checkout')}}" type="button" class="button update_cart">Checkout</a>
-												{{-- <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward"> --}}
-											</td>
+												<a href="{{url('login')}}" type="button" class="button update_cart">Checkout</a>
+												</td>
 										</tr>
 									</tbody>
 								</table>
-							</form>
+							</form> --}}
 							<div class="cart-collaterals">
 								<div class="cross-sells">
-									<h2>You may be interested in...</h2>
-									<ul class="products">
+									<h2>Billing Details</h2>
+                                    @if(session('order-message'))
+                                            <div class="alert alert-success">
+                                                {!! session('order-message') !!}
+                                            </div>
+                                    @endif
+									@if(session('error'))
+                                            <div class="alert alert-danger">
+                                                {!! session('error') !!}
+                                            </div>
+                                    @endif
+                                    <form action="{{url('place-order')}}" method="post">
+                                     {{csrf_field()}}
+                                    <ul class="products">
+										<li class="product">
+                                        <input type="text" class="form-control" placeholder="Your first name *" autofocus name="first_name" required>
+										</li>
+										<li class="product">
+										<input type="text" class="form-control" placeholder="Your last name *" name="last_name" required>
+										</li>
+									</ul>
+                                    <br>  <br> 
+                                    <ul class="products" style="margin-top:20px;">
+										<li class="product">
+                                            <input type="text" class="form-control" placeholder="Your phone number *" name="phone" required>
+										</li>
+										<li class="product">
+											<input type="email" class="form-control" placeholder="Your email *" name="email" required>
+										</li>
+									</ul>
+                                     <br> <br> 
+                                    <ul class="products" style="margin-top:20px;">
+										<li class="product">
+											<input type="text" class="form-control" placeholder="Your city *" name="city" required>
+										</li>
+										 <li class="product">
+                                                <textarea name="address" rows="3" placeholder="Your address *"  cols="20" spellcheck="false"></textarea>
+                                        </li>
+									</ul>
+                                    <br><br>
+                                    <ul class="products">
+                                    <li class="product">
+                                            <input type="hidden" name="total" value="{{Cart::total()}}">
+                                            <button type="submit" class="btnSubmit" value="Register">Place Order</button>
+										</li>
+                                       
+                                    </ul>
+
+                                    </form>
+									{{-- <ul class="products">
 										<li class="product">
 											<a href="single-product.html">
 												<img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-2.jpg">
@@ -148,7 +190,7 @@
 											</a>
 											<a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
 										</li>
-									</ul>
+									</ul> --}}
 								</div>
 								<div class="cart_totals ">
 									<h2>Cart Totals</h2>

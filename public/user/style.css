@@ -1121,3 +1121,27 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .pagination > li > a, .pagination > li > span {
   color: #5a88ca;
 }
+
+
+.home-cart button[type=submit]{
+    /* background: none repeat scroll 0 0 #5a88ca; */
+    border: medium none;
+    color: #fff;
+    text-transform: uppercase;
+}
+.home-cart button:hover{
+    background-color: #000;
+        color: #17a78b;
+}
+
+
+.update_cart {
+    background: none repeat scroll 0 0 #5a88ca;
+    border: medium none;
+    color: #fff;
+    padding: 11px 20px;
+    text-transform: uppercase;
+}
+.update_cart:hover {
+    background-color: #222;
+}

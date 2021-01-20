@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+
 
 use Illuminate\Http\Request;
 use App\Customer;
@@ -9,9 +11,26 @@ Session_start();
 use Illuminate\Support\Facades\Redirect;
 class CustomerController extends Controller
 {
-	public function login()
+	public function login(Request $request)
 	{
-		return view('user/account/login');
+        $method = $request->method();
+        // dd($method);
+        if($method=="POST"){
+            $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            
+            // return redirect()->intended('dashboard');
+            dd('matched');
+        } else{
+            dd('not matched');
+        }
+            // dd($request->all());
+        } else{
+            return view('user/account/login');
+        }
+		
 	}
 	public function store(Request $request)
 	{

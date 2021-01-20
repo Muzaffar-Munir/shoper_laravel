@@ -46,15 +46,20 @@
                         <div class="product-carousel">
                             @foreach($latproduct as $latestpro)
                             <div class="single-product">
-                                <div class="product-f-image">
+                                <div class="product-f-image home-cart">
                                     <img src="{!! url('uploads/product/'.$latestpro->product_image) !!}" alt="" width="200px;">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <form action="{{url('add-cart',$latestpro->product_id)}}" method="post" class="cart">
+                                        {{csrf_field()}}
+                                         {{-- <button class="add-to-cart-link" type="submit"><i class="fa fa-shopping-cart"></i> Add to cart</button> --}}
+                                          <a class="add-to-cart-link"><button type="submit">Add to <i class="fa fa-shopping-cart"></i></button></a>
+                                        </form>
+                                        {{-- --}}
+                                        <a href="{{url('single-shop/'.$latestpro->product_id)}}" class="view-details-link"><i class="fa fa-liproduct_singlenk"></i> See details</a>
                                     </div>
                                 </div>
 
-                                <h2><a href="single-product.html">{{$latestpro->product_name}}</a></h2>
+                                <h2><a href="{{url('single-shop/'.$latestpro->product_id)}}">{{$latestpro->product_name}}</a></h2>
 
                                 <div class="product-carousel-price">
                                     <ins>{{$latestpro->product_price}}</ins>
@@ -242,6 +247,5 @@
             </div>
         </div>
     </div> <!-- End product widget area -->
-
 
 @endsection

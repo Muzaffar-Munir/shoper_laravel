@@ -12,6 +12,7 @@
         "bumbummen99/shoppingcart": "^3.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.18.35",
+        "gloudemans/shoppingcart": "^2.6",
         "laravel/tinker": "^2.0"
     },
     "require-dev": {
